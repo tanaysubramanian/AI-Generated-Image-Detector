@@ -1,8 +1,3 @@
-"""
-Borrowed from Homework 5 - CNNs
-CS1430 - Computer Vision
-Brown University
-"""
 import os
 import random
 import numpy as np
@@ -80,32 +75,8 @@ class Datasets():
 
             data_sample[i] = img
 
-        # TASK 1
-        # TODO: Calculate the mean and standard deviation
-        #       of the samples in data_sample and store them in
-        #       self.mean and self.std respectively.
-        #
-        #       Note: This is _not_ a mean over all pixels;
-        #             it is a mean image (the mean input data point).
-        #       
-        #             For example, the mean of the two images:
-        #
-        #             [[[0, 0, 100], [0, 0, 100]],      [[[100, 0, 0], [100, 0, 0]],
-        #              [[0, 100, 0], [0, 100, 0]],  and  [[0, 100, 0], [0, 100, 0]],
-        #              [[100, 0, 0], [100, 0, 0]]]       [[0, 0, 100], [0, 0, 100]]]
-        #
-        #             would be
-        #
-        #             [[[50, 0, 50], [50, 0, 50]],
-        #              [[0, 100, 0], [0, 100, 0]],
-        #              [[50, 0, 50], [50, 0, 50]]]
-        #
-        # ==========================================================
-
         self.mean = np.mean(data_sample, axis = 0)
         self.std = np.std(data_sample, axis = 0)
-
-        # ==========================================================
 
         print("Dataset mean shape: [{0}, {1}, {2}]".format(
             self.mean.shape[0], self.mean.shape[1], self.mean.shape[2]))
@@ -129,15 +100,7 @@ class Datasets():
             img - numpy array of shape (image size, image size, 3)
         """
 
-        # TASK 1
-        # TODO: Standardize the input image. Use self.mean and self.std
-        #       that were calculated in calc_mean_and_std() to perform
-        #       the standardization.
-        # =============================================================
-
         img = (img - self.mean)/self.std
-
-        # =============================================================
 
         return img
 
@@ -153,16 +116,6 @@ class Datasets():
 
         img = img / 255.
         img = self.standardize(img)
-
-        # EXTRA CREDIT: 
-        # Write your own custom data augmentation procedure, creating
-        # an effect that cannot be achieved using the arguments of
-        # ImageDataGenerator. This can potentially boost your accuracy
-        # in the validation set. Note that this augmentation should
-        # only be applied to some input images, so make use of the
-        # 'random' module to make sure this happens. Also, make sure
-        # that ImageDataGenerator uses *this* function for preprocessing
-        # on augmented data.
 
         if random.random() < 0.3:
             img = img + tf.random.uniform(
@@ -190,62 +143,59 @@ class Datasets():
             An iterable image-batch generator
         """
 
-        # if augment:
-            # TODO: Use the arguments of ImageDataGenerator()
-            #       to augment the data. Leave the
-            #       preprocessing_function argument as is unless
-            #       you have written your own custom preprocessing
-            #       function (see custom_preprocess_fn()).
-            #
-            # Documentation for ImageDataGenerator: https://bit.ly/2wN2EmK
-            #
-            # ============================================================
+        if augment:
+            TODO: Use the arguments of ImageDataGenerator()
+                  to augment the data. Leave the
+                  preprocessing_function argument as is unless
+                  you have written your own custom preprocessing
+                  function (see custom_preprocess_fn()).
+            
+            Documentation for ImageDataGenerator: https://bit.ly/2wN2EmK
+            
 
-            # data_gen = tf.keras.preprocessing.image.ImageDataGenerator(
-            #     preprocessing_function=self.preprocess_fn)
-            #LOW
-            # data_gen = tf.keras.preprocessing.image.ImageDataGenerator(
-            #     preprocessing_function=self.preprocess_fn,
-            #     horizontal_flip = True,
-            #     rotation_range = 1,             # prev: 15, 5, 2, 1
-            #     shear_range = 1,                # prev: 15, 5, 2, 1
-            #     zoom_range = 0.05,              # prev: 0.2, 0.1, 0.05
-            #     width_shift_range=0.05,         # prev: 0.2, 0.1, 0.05, 0
-            #     height_shift_range=0.05,        # prev: 0.2, 0.1, 0.05, 0
-            #     brightness_range = [0.95,1.05], # prev: [0.85,1.15], [0.9,1.1], [0.95,1.05]
-            #     channel_shift_range = 0.00      # prev: 0.05, 0
-            # )
+            data_gen = tf.keras.preprocessing.image.ImageDataGenerator(
+                preprocessing_function=self.preprocess_fn)
+            LOW
+            data_gen = tf.keras.preprocessing.image.ImageDataGenerator(
+                preprocessing_function=self.preprocess_fn,
+                horizontal_flip = True,
+                rotation_range = 1,             # prev: 15, 5, 2, 1
+                shear_range = 1,                # prev: 15, 5, 2, 1
+                zoom_range = 0.05,              # prev: 0.2, 0.1, 0.05
+                width_shift_range=0.05,         # prev: 0.2, 0.1, 0.05, 0
+                height_shift_range=0.05,        # prev: 0.2, 0.1, 0.05, 0
+                brightness_range = [0.95,1.05], # prev: [0.85,1.15], [0.9,1.1], [0.95,1.05]
+                channel_shift_range = 0.00      # prev: 0.05, 0
+            )
 
-            #MID
-            # data_gen = tf.keras.preprocessing.image.ImageDataGenerator(
-            #     preprocessing_function=self.preprocess_fn,
-            #     horizontal_flip = True,
-            #     rotation_range = 2,             # prev: 15, 5, 2, 1
-            #     shear_range = 2,                # prev: 15, 5, 2, 1
-            #     zoom_range = 0.10,              # prev: 0.2, 0.1, 0.05
-            #     width_shift_range=0.10,         # prev: 0.2, 0.1, 0.05, 0
-            #     height_shift_range=0.10,        # prev: 0.2, 0.1, 0.05, 0
-            #     brightness_range = [0.90,1.10], # prev: [0.85,1.15], [0.9,1.1], [0.95,1.05]
-            #     channel_shift_range = 0.05      # prev: 0.05, 0
-            # )
+            MID
+            data_gen = tf.keras.preprocessing.image.ImageDataGenerator(
+                preprocessing_function=self.preprocess_fn,
+                horizontal_flip = True,
+                rotation_range = 2,             # prev: 15, 5, 2, 1
+                shear_range = 2,                # prev: 15, 5, 2, 1
+                zoom_range = 0.10,              # prev: 0.2, 0.1, 0.05
+                width_shift_range=0.10,         # prev: 0.2, 0.1, 0.05, 0
+                height_shift_range=0.10,        # prev: 0.2, 0.1, 0.05, 0
+                brightness_range = [0.90,1.10], # prev: [0.85,1.15], [0.9,1.1], [0.95,1.05]
+                channel_shift_range = 0.05      # prev: 0.05, 0
+            )
 
-            #HIGH
-            # data_gen = tf.keras.preprocessing.image.ImageDataGenerator(
-            #     preprocessing_function=self.preprocess_fn,
-            #     horizontal_flip = True,
-            #     rotation_range = 6,             # prev: 15, 5, 2, 1
-            #     shear_range = 4,                # prev: 15, 5, 2, 1
-            #     zoom_range = 0.15,              # prev: 0.2, 0.1, 0.05
-            #     width_shift_range=0.15,         # prev: 0.2, 0.1, 0.05, 0
-            #     height_shift_range=0.15,        # prev: 0.2, 0.1, 0.05, 0
-            #     brightness_range = [0.85,1.15], # prev: [0.85,1.15], [0.9,1.1], [0.95,1.05]
-            #     channel_shift_range = 0.05,     # prev: 0.05, 0
-            #     fill_mode='reflect'
-            # )
+            HIGH
+            data_gen = tf.keras.preprocessing.image.ImageDataGenerator(
+                preprocessing_function=self.preprocess_fn,
+                horizontal_flip = True,
+                rotation_range = 6,             # prev: 15, 5, 2, 1
+                shear_range = 4,                # prev: 15, 5, 2, 1
+                zoom_range = 0.15,              # prev: 0.2, 0.1, 0.05
+                width_shift_range=0.15,         # prev: 0.2, 0.1, 0.05, 0
+                height_shift_range=0.15,        # prev: 0.2, 0.1, 0.05, 0
+                brightness_range = [0.85,1.15], # prev: [0.85,1.15], [0.9,1.1], [0.95,1.05]
+                channel_shift_range = 0.05,     # prev: 0.05, 0
+                fill_mode='reflect'
+            )
 
-            # ============================================================
-        # else:
-            # Don't modify this
+        else:
         data_gen = tf.keras.preprocessing.image.ImageDataGenerator(
             preprocessing_function=self.preprocess_fn)
 
