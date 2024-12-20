@@ -2,7 +2,7 @@
 
 ## Project Description
 I, along with Sami Nourji, Sujith Pakala, and Everest Yang developed a novel AI-Generated Image Detector which distinguishes real images from AI-generated ones, addressing challenges posed by the rise of hyperrealistic content
-produced by generative AI. Using the CIFAKE dataset, we implement a CNN architecture with Fourier Transform features to evaluate the model's accuracy in identifying synthetic images. Our hypothesis is that incorporating frequency information via Fourier Transforms, in addition to spatial domain information, into a CNN can enhance the detection of AIgenerated images by leveraging subtle frequency inconsistencies.
+produced by generative AI. Using the CIFAKE dataset, we implement a CNN architecture with Fourier Transform features to evaluate the model's accuracy in identifying synthetic images. Our hypothesis is that incorporating frequency information via Fourier Transforms, in addition to spatial domain information, into a CNN can enhance the detection of AI-generated images by leveraging subtle frequency inconsistencies.
 This was disproved by our research, as our best-performing baseline CNN achieved a testing accuracy of 98.58%, while our Fourier-based model reached an accuracy of 98.50%. Our findings highlight that incorporating Fourier features into the detection pipeline provides valuable insights, although the overall accuracy depends mostly on the CNN architecture. This research aims to encourage future research in the growing field concerning digital authenticity.
 
 ## Technical Implementation
