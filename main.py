@@ -1,14 +1,8 @@
-"""
-Borrowed from Homework 5 - CNNs
-CS1430 - Computer Vision
-Brown University
-"""
 import os
 import sys
 import argparse
 import re
 from datetime import datetime
-# import kagglehub
 import tensorflow as tf
 
 import hyperparameters as hp
@@ -65,51 +59,6 @@ def parse_args():
         action='store_true',
         default=False,
         help='Random Fourier Transform processing and CNN seperate, then combined into a final layer. Default is disabled.')
-
-    
-    # parser.add_argument(
-    #     '--augment',
-    #     action='store_true',
-    #     default=False,
-    #     help='Enable data augmentation. Default is disabled.')
-    # parser.add_argument(
-    #     '--task',
-    #     required=True,
-    #     choices=['1', '3'],
-    #     help='''Which task of the assignment to run -
-    #     training from scratch (1), or fine tuning VGG-16 (3).''')
-    # # parser.add_argument(
-    # #     '--data',
-    # #     default='..'+os.sep+'data'+os.sep,
-    # #     help='Location where the dataset is stored.')
-    # parser.add_argument(
-    #     '--load-vgg',
-    #     default='vgg16_imagenet.h5',
-    #     help='''Path to pre-trained VGG-16 file (only applicable to
-    #     task 3).''')
-    # parser.add_argument(
-    #     '--load-checkpoint',
-    #     default=None,
-    #     help='''Path to model checkpoint file (should end with the
-    #     extension .h5). Checkpoints are automatically saved when you
-    #     train your model. If you want to continue training from where
-    #     you left off, this is how you would load your weights.''')
-    # parser.add_argument(
-    #     '--confusion',
-    #     action='store_true',
-    #     help='''Log a confusion matrix at the end of each
-    #     epoch (viewable in Tensorboard). This is turned off
-    #     by default as it takes a little bit of time to complete.''')
-    # parser.add_argument(
-    #     '--evaluate',
-    #     action='store_true',
-    #     help='''Skips training and evaluates on the test set once.
-    #     You can use this to test an already trained model by loading
-    #     its checkpoint.''')
-    # parser.add_argument(
-    #     '--lime-image',
-    #     default='test/Bedroom/image_0003.jpg',
-    #     help='''Name of an image in the dataset to use for LIME evaluation.''')
 
     return parser.parse_args()
 
