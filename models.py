@@ -1,9 +1,3 @@
-"""
-Borrowed from Homework 5 - CNNs
-CS1430 - Computer Vision
-Brown University
-"""
-
 import tensorflow as tf
 import tensorflow.signal as tf_signal
 import numpy as np
